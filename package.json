@@ -1,0 +1,24 @@
+{
+  "name": "practice-writing-unittests-eric-v",
+  "version": "1.0.0",
+  "description": "launch_code cohort activity - practicing unit tests",
+  "main": "cart.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eric-Vaughn/practice-writing-unitTests-eric-v.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Eric-Vaughn/practice-writing-unitTests-eric-v/issues"
+  },
+  "homepage": "https://github.com/Eric-Vaughn/practice-writing-unitTests-eric-v#readme",
+  "devDependencies": {
+    "jest": "^30.5.2"
+  }
+}
