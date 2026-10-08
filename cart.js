@@ -17,4 +17,4 @@ function getTotalItems(cart) {
     return cart.reduce((sum, currItem) => (sum += currItem.quantity), 0);
 }
 
-module.export = { addItem, removeItem, getTotalItems };
+module.exports = { addItem, removeItem, getTotalItems };
