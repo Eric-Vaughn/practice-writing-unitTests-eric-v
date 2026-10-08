@@ -1,9 +1,7 @@
 function addItem(cart, item, quantity) {
-    if (!Array.isArray(cart)) {
-        return [];
-    }
-    // Early return if the item passed in does not have a .name & .quantity
-    if (!item.itemName || !item.quantity) cart;
+    if (!Array.isArray(cart)) return [];
+    // Early return if the item passed in does not have a .itemName & .quantity
+    if (!("itemName" in item) || ("quantity" in item)) cart;
 
     cart.push({ itemName: item, quantity: quantity }); // Mutate array
     return cart; // Return mutated array
