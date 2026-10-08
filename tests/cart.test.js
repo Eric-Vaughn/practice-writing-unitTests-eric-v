@@ -74,18 +74,26 @@ describe("removeItem", function () {
 describe("getTotalItems", function () {
     // Positive
     test("valid cart's total number of items have been summed properly", function () {
-        const totalGlobalCartQuant = globalTestCart.reduce((sum, currItem) => (sum += currItem.quantity), 0);
+        const totalGlobalCartQuant = globalTestCart.reduce(
+            (sum, currItem) => (sum += currItem.quantity),
+            0,
+        );
 
         expect(cart.getTotalItems(globalTestCart)).toBe(totalGlobalCartQuant);
     });
 
     // Negative
     test("invalid cart's total number of items is 0", function () {
-        expect().toBe();
+        const invalidCart = globalTestCart.map((item) => ({
+            itemName: item.itemName,
+            id: item.quantity, // Property CAN'T be called "id"
+        }));
+
+        expect(cart.getTotalItems(invalidCart)).toBe(0);
     });
 
     // Edge
     test("an empty cart's total number of items is 0", function () {
-        expect().toBe();
+        expect(cart.getTotalItems([])).toBe(0);
     });
 });
