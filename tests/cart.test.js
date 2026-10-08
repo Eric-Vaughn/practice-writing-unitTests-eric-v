@@ -1,9 +1,10 @@
 const cart = require("../cart.js");
 
-let testCart = [];
+let globalTestCart = [];
 
 beforeEach(() => {
-    testCart = [
+    // Always reset our gobal test variable(s)
+    globalTestCart = [
         { itemName: "apple", quantity: 2 },
         { itemName: "banana", quantity: 1 },
         { itemName: "pineapple", quantity: 1 },
@@ -11,57 +12,65 @@ beforeEach(() => {
     ];
 });
 
-// TODO:
+// addItem()
 describe("addItem", function () {
     // Positive
     test("valid item has been added successfully", function () {
-        expect(cart.addItem({ itemName: "carrot", quantity: 4 })).toBe(
+        const newItem = { itemName: "carrot", quantity: 4 };
+        const expectedCart = [
             { itemName: "apple", quantity: 2 },
             { itemName: "banana", quantity: 1 },
             { itemName: "pineapple", quantity: 1 },
             { itemName: "lemon", quantity: 5 },
             { itemName: "carrot", quantity: 4 },
-        );
+        ];
+
+        expect(cart.addItem(newItem)).toBe(expectedCart);
     });
 
     // Negative
     test("invalid item has not been added", function () {
-        expect(cart.addItem({ itemName: "carrot" })).toBe(
-            { itemName: "apple", quantity: 2 },
-            { itemName: "banana", quantity: 1 },
-            { itemName: "pineapple", quantity: 1 },
-            { itemName: "lemon", quantity: 5 },
-        );
+        const newBadItem = { itemName: "carrot" };
+
+        expect(cart.addItem(newBadItem)).toBe(globalTestCart);
     });
 
     // Edge
     test("given an empty object (item), return the unchanged array (cart)", function () {
-        expect(cart.addItem({})).toBe(
-            { itemName: "apple", quantity: 2 },
-            { itemName: "banana", quantity: 1 },
-            { itemName: "pineapple", quantity: 1 },
-            { itemName: "lemon", quantity: 5 },
-        );
+        expect(cart.addItem({})).toBe(globalTestCart);
     });
 });
 
+// removeItem()
 describe("removeItem", function () {
     // Positive
-    test("", function () {
-        expect().toBe();
+    test("valid item has been removed successfully", function () {
+        const targetItem = { itemName: "banana", quantity: 1 };
+        const resultingCart = [
+            { itemName: "apple", quantity: 2 },
+            { itemName: "pineapple", quantity: 1 },
+            { itemName: "lemon", quantity: 5 },
+        ];
+
+        expect(cart.removeItem(targetItem)).toBe(resultingCart);
     });
 
     // Negative
-    test("", function () {
-        expect().toBe();
+    test("invalid item has not been removed", function () {
+        const invalidItem = { id: "banana", quantity: 1 };
+
+        expect(cart.removeItem(invalidItem)).toBe(globalTestCart);
     });
 
     // Edge
-    test("", function () {
-        expect().toBe();
+    test("item to be removed doesn't exist, no change", function () {
+        const carrot = { itemName: "carrot", quantity: 4 };
+
+        expect(cart.removeItem(carrot)).toBe(globalTestCart);
     });
 });
 
+// getTotalItems()
 describe("getTotalItems", function () {
     // Positive
     test("", function () {
