@@ -9,10 +9,10 @@ function addItem(cart, item, quantity) {
     return cart; // Return mutated array
 }
 
-function removeItem(cart, item) {
-    // If the cart is empty, return an empty array
-    if (!cart) return [];
-    return cart.filter((item) => item.itemName !== item.itemName);
+function removeItem(cart, target) {
+    // If the cart is empty or not an array, return an empty array
+    if (!cart || Array.isArray(cart)) return cart;
+    return cart.filter((item) => item.itemName !== target.itemName);
 }
 
 function getTotalItems(cart) {
