@@ -1,11 +1,15 @@
 const cart = require("../cart.js");
 
-let testCart = [
-    { itemName: "apple", quantity: 2 },
-    { itemName: "banana", quantity: 1 },
-    { itemName: "pineapple", quantity: 1 },
-    { itemName: "lemon", quantity: 5 },
-];
+let testCart = [];
+
+beforeEach(() => {
+    testCart = [
+        { itemName: "apple", quantity: 2 },
+        { itemName: "banana", quantity: 1 },
+        { itemName: "pineapple", quantity: 1 },
+        { itemName: "lemon", quantity: 5 },
+    ];
+});
 
 // TODO:
 describe("addItem", function () {
