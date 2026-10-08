@@ -73,17 +73,19 @@ describe("removeItem", function () {
 // getTotalItems()
 describe("getTotalItems", function () {
     // Positive
-    test("", function () {
-        expect().toBe();
+    test("valid cart's total number of items have been summed properly", function () {
+        const totalGlobalCartQuant = globalTestCart.reduce((sum, currItem) => (sum += currItem.quantity), 0);
+
+        expect(cart.getTotalItems(globalTestCart)).toBe(totalGlobalCartQuant);
     });
 
     // Negative
-    test("", function () {
+    test("invalid cart's total number of items is 0", function () {
         expect().toBe();
     });
 
     // Edge
-    test("", function () {
+    test("an empty cart's total number of items is 0", function () {
         expect().toBe();
     });
 });
