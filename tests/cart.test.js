@@ -15,8 +15,9 @@ beforeEach(() => {
 // addItem()
 describe("addItem", function () {
     // Positive
-    test("valid item has been added successfully", function () {
-        const newItem = { itemName: "carrot", quantity: 4 };
+    test("a valid item has been added successfully", function () {
+        const newItemName = "carrot";
+        const newQuantity = 4;
         const expectedCart = [
             { itemName: "apple", quantity: 2 },
             { itemName: "banana", quantity: 1 },
@@ -25,19 +26,24 @@ describe("addItem", function () {
             { itemName: "carrot", quantity: 4 },
         ];
 
-        expect(cart.addItem(newItem)).toBe(expectedCart);
+        expect(cart.addItem(globalTestCart, newItemName, newQuantity)).toEqual(
+            expectedCart,
+        );
     });
 
     // Negative
-    test("invalid item has not been added", function () {
-        const newBadItem = { itemName: "carrot" };
+    test("an invalid item has not been added", function () {
+        const newBadItem = "carrot";
+        const newBadQuantity = -1;
 
-        expect(cart.addItem(newBadItem)).toBe(globalTestCart);
+        expect(cart.addItem(globalTestCart, newBadItem, newBadQuantity)).toBe(
+            globalTestCart,
+        );
     });
 
     // Edge
-    test("given an empty object (item), return the unchanged array (cart)", function () {
-        expect(cart.addItem({})).toBe(globalTestCart);
+    test("given an empty name, return the unchanged array", function () {
+        expect(cart.addItem(globalTestCart, "", 0)).toBe(globalTestCart);
     });
 });
 
@@ -52,14 +58,18 @@ describe("removeItem", function () {
             { itemName: "lemon", quantity: 5 },
         ];
 
-        expect(cart.removeItem(globalTestCart, targetItem)).toEqual(resultingCart);
+        expect(cart.removeItem(globalTestCart, targetItem)).toEqual(
+            resultingCart,
+        );
     });
 
     // Negative
     test("invalid item has not been removed", function () {
         const invalidItem = { id: "banana", quantity: 1 };
 
-        expect(cart.removeItem(globalTestCart, invalidItem)).toEqual(globalTestCart);
+        expect(cart.removeItem(globalTestCart, invalidItem)).toEqual(
+            globalTestCart,
+        );
     });
 
     // Edge
