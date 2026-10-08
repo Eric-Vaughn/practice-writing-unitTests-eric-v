@@ -35,8 +35,13 @@ describe("addItem", function () {
     });
 
     // Edge
-    test("", function () {
-        expect().toBe();
+    test("given an empty object (item), return the unchanged array (cart)", function () {
+        expect(cart.addItem({})).toBe(
+            { itemName: "apple", quantity: 2 },
+            { itemName: "banana", quantity: 1 },
+            { itemName: "pineapple", quantity: 1 },
+            { itemName: "lemon", quantity: 5 },
+        );
     });
 });
 
