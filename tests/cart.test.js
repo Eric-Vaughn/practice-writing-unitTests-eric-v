@@ -73,7 +73,7 @@ describe("removeItem", function () {
 // getTotalItems()
 describe("getTotalItems", function () {
     // Positive
-    test("valid cart's total number of items have been summed properly", function () {
+    test("a valid cart's total number of items have been summed properly", function () {
         const totalGlobalCartQuant = globalTestCart.reduce(
             (sum, currItem) => (sum += currItem.quantity),
             0,
@@ -83,7 +83,7 @@ describe("getTotalItems", function () {
     });
 
     // Negative
-    test("invalid cart's total number of items is 0", function () {
+    test("an invalid cart's total number of items is 0", function () {
         const invalidCart = globalTestCart.map((item) => ({
             itemName: item.itemName,
             id: item.quantity, // Property CAN'T be called "id"
