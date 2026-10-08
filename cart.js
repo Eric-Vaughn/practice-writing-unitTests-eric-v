@@ -10,8 +10,8 @@ function addItem(cart, item, quantity) {
 }
 
 function removeItem(cart, target) {
-    // If the cart is empty or not an array, return an empty array
-    if (!cart || Array.isArray(cart)) return cart;
+    if (!Array.isArray(cart)) return []; // Check if we have an array
+    if (!cart) return cart; // If the cart is empty, return the given array
     return cart.filter((item) => item.itemName !== target.itemName);
 }
 

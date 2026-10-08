@@ -52,21 +52,21 @@ describe("removeItem", function () {
             { itemName: "lemon", quantity: 5 },
         ];
 
-        expect(cart.removeItem(globalTestCart, targetItem)).toBe(resultingCart);
+        expect(cart.removeItem(globalTestCart, targetItem)).toEqual(resultingCart);
     });
 
     // Negative
     test("invalid item has not been removed", function () {
         const invalidItem = { id: "banana", quantity: 1 };
 
-        expect(cart.removeItem(globalTestCart, invalidItem)).toBe(globalTestCart);
+        expect(cart.removeItem(globalTestCart, invalidItem)).toEqual(globalTestCart);
     });
 
     // Edge
     test("item to be removed doesn't exist, no change", function () {
         const carrot = { itemName: "carrot", quantity: 4 };
 
-        expect(cart.removeItem(globalTestCart, carrot)).toBe(globalTestCart);
+        expect(cart.removeItem(globalTestCart, carrot)).toEqual(globalTestCart);
     });
 });
 
